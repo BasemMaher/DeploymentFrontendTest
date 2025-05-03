@@ -1,6 +1,23 @@
+import React, { useState } from 'react';
 import './App.css';
-
+import axios from 'axios';
 function App() {
+  const [homeText, setHomeText] = useState('This is the home screen.');
+
+
+
+  const handleContactClick = async (e) => {
+    e.preventDefault(); // Prevent page reload
+    try {
+      const response = await axios.get('https://gangoffive.up.railway.app/api/great');
+      setHomeText(response.data); // Axios automatically parses JSON or text
+    } catch (error) {
+      setHomeText('Failed to fetch data.');
+      console.error('Error fetching data:', error);
+    }
+  };
+  
+
   return (
     <div className="App">
       <nav className="navbar">
@@ -8,13 +25,13 @@ function App() {
         <ul className="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact" onClick={handleContactClick}>Contact</a></li>
         </ul>
       </nav>
 
       <header className="App-header">
         <h1>Welcome to the Gang of Five</h1>
-        <p>This is the home screen.</p>
+        <p>{homeText}</p>
       </header>
     </div>
   );
