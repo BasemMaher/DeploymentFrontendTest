@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './App.css';
-import axios from 'axios';
 function App() {
   const [homeText, setHomeText] = useState('This is the home screen.');
 
@@ -9,13 +8,19 @@ function App() {
   const handleContactClick = async (e) => {
     e.preventDefault(); // Prevent page reload
     try {
-      const response = await axios.get('https://gangoffive.up.railway.app/api/great');
-      setHomeText(response.data); // Axios automatically parses JSON or text
+      const response = await fetch('https://gangoffive.up.railway.app/api/great');
+      
+      // Ensure the response is in text format
+      const data = await response.text(); // Assuming the API returns plain text
+      
+      console.log("data", data); // Log the fetched data
+      setHomeText(data);
     } catch (error) {
       setHomeText('Failed to fetch data.');
       console.error('Error fetching data:', error);
     }
-  };
+};
+
   
 
   return (
