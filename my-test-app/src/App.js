@@ -11,8 +11,12 @@ function App() {
   const handleContactClick = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get("https://gangoffive.up.railway.app/api/great");
-      const data = response.data;
+      const response = await axios.get("https://gangoffive.up.railway.app/api/great", {
+        withCredentials: true,
+        responseType: 'text', // 👈 Important if the response is plain text, not JSON
+      });
+  
+      const data = response.data; // 👈 Use .data, not .Text
       console.log("data", data);
       setHomeText(data);
     } catch (error) {
@@ -20,6 +24,7 @@ function App() {
       console.error('Error fetching data:', error);
     }
   };
+  
   
 
   
