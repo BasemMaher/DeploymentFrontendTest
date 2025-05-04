@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
 import './App.css';
+import axios from 'axios';
 function App() {
   const [homeText, setHomeText] = useState('This is the home screen.');
 
 
 
+ 
+
   const handleContactClick = async (e) => {
-    e.preventDefault(); // Prevent page reload
+    e.preventDefault();
     try {
-      const response = await fetch('https://gangoffive.up.railway.app/api/great');
-      
-      // Ensure the response is in text format
-      const data = await response.text(); // Assuming the API returns plain text
-      
-      console.log("data", data); // Log the fetched data
+      const response = await axios.get("https://gangoffive.up.railway.app/api/great");
+      const data = response.data;
+      console.log("data", data);
       setHomeText(data);
     } catch (error) {
       setHomeText('Failed to fetch data.');
       console.error('Error fetching data:', error);
     }
-};
+  };
+  
 
   
 
