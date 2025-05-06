@@ -1,0 +1,82 @@
+/* Basic Body Style */
+body {
+    background-color: #f8f9fa;  /* Light gray background */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    height: "100vh"; /* Ensures the full viewport height is used */
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+  }
+  
+  /* Login Form Container */
+  form {
+    align-items: center;
+    width: 100%; /* Full width */
+    height:"auto"; /* Full height */
+    max-width: none;  /* Remove max-width to allow full screen */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    transition: box-shadow 0.3s ease-in-out;
+    box-sizing: border-box; /* Ensures padding doesn't affect overall width */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center the form content */
+    align-items: center; /* Horizontally center the form content */
+  }
+  
+  /* Form Header */
+  h4 {
+    color: #d9534f;  /* Red color for title */
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px; /* Adds space below the header */
+  }
+  
+  /* Input Fields */
+  input {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 12px;
+    margin-bottom: 15px;
+    width: 100%;  /* Makes inputs take the full width of the form */
+    box-sizing: border-box; /* Ensures padding doesn't affect the width */
+    transition: border-color 0.3s ease;
+  }
+  
+  input:focus {
+    border-color: #d9534f;  /* Red border when focused */
+    box-shadow: 0 0 5px rgba(217, 83, 79, 0.5);
+  }
+  
+  /* Submit Button */
+  button {
+    background-color: #d9534f;  /* Red background */
+    color: white;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;  /* Makes button take the full width of the form */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #c9302c;  /* Darker red on hover */
+    transform: scale(1.05);
+  }
+  
+  button:active {
+    background-color: #ac2925;  /* Even darker red on click */
+  }
+  
+  /* Alerts */
+  .alert {
+    background-color: #f2dede;  /* Light red background */
+    color: #a94442;  /* Red color for error */
+    border-color: #ebccd1;  /* Light red border */
+  }
+  
