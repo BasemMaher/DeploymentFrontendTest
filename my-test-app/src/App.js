@@ -6,7 +6,7 @@ function App() {
   const [homeText, setHomeText] = useState('This is the home screen.');
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleContactClick = async (e) => {
+  const handleAboutClick = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.get("https://gangoffive.up.railway.app/api/great", {
@@ -35,7 +35,7 @@ function App() {
         <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <li><a href="#home" onClick={() => setMenuOpen(false)}>Home</a></li>
           <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
-          <li><a href="#about" onClick={(e) => { handleContactClick(e); setMenuOpen(false); }}>About</a></li>
+          <li><a href="#about" onClick={(e) => { handleAboutClick(e); setMenuOpen(false); }}>About</a></li>
         </ul>
       </nav>
 
