@@ -4,13 +4,14 @@ body {
 }
 
 .navbar {
+  margin-top: 2%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: red;
   padding: 10px 20px;
   color: white;
-  margin-top: 5%;
+  flex-wrap: wrap;
 }
 
 .nav-logo {
@@ -18,6 +19,7 @@ body {
   font-weight: bold;
 }
 
+/* Base nav links layout */
 .nav-links {
   list-style: none;
   display: flex;
@@ -25,6 +27,7 @@ body {
   margin: 0;
 }
 
+/* Nav link styles */
 .nav-links li a {
   color: white;
   text-decoration: none;
@@ -33,9 +36,104 @@ body {
 
 .nav-links li a:hover {
   text-decoration: underline;
+  background-color: white;
+  color: red;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+/* Responsive Styles for Mobile */
+@media (max-width: 600px) {
+  .navbar {
+    margin-top: 2%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding-left: 0;
+    margin-top: 10px;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links li a {
+    display: block;
+    padding: 10px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
 }
 
 .App-header {
   text-align: center;
   padding: 60px 20px;
 }
+
+h1 {
+  font-size: 2rem;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .App-header {
+    padding: 40px 15px;
+  }
+}
+/* Menu icon styles */
+.menu-icon {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* Show menu icon and hide nav-links by default on small screens */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 20px;
+    background-color: red;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li a {
+    display: block;
+    padding: 8px 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    width: 100%;
+  }
+}
+
+
