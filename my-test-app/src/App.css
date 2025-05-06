@@ -1,139 +1,63 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
-.navbar {
-  margin-top: 2%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: red;
+/* Custom Navbar Style */
+.navbar-custom {
+  background: linear-gradient(to right, rgb(238, 88, 68), rgb(176, 20, 6));
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
   padding: 10px 20px;
-  color: white;
-  flex-wrap: wrap;
+  width: 100%;
+  min-width: 100%;
 }
 
-.nav-logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-/* Base nav links layout */
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  margin: 0;
-}
-
-/* Nav link styles */
-.nav-links li a {
-  color: white;
-  text-decoration: none;
+.nav-item {
+  position: relative;
+  padding: 10px 20px;
   font-weight: 500;
+  color: #fff !important;
+  transition: all 0.3s ease;
 }
 
-.nav-links li a:hover {
-  text-decoration: underline;
-  background-color: white;
-  color: red;
-  padding: 5px;
-  border-radius: 4px;
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff !important;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
 }
 
-/* Responsive Styles for Mobile */
-@media (max-width: 600px) {
-  .navbar {
-    margin-top: 2%;
-    flex-direction: column;
-    align-items: flex-start;
+/* Underline Effect on Hover */
+.nav-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+
+.nav-item:hover::after {
+  width: 100%;
+}
+
+/* Main Header Styling */
+.main-header {
+  margin-top: 90px;
+  background-color: #f8f9fa;
+}
+
+.main-header h1 {
+  color: rgb(176, 20, 6);
+}
+
+.main-header p {
+  color: #555;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .navbar-custom {
+    padding: 12px 20px;
   }
 
-  .nav-links {
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-    padding-left: 0;
-    margin-top: 10px;
-  }
-
-  .nav-links li {
-    width: 100%;
-  }
-
-  .nav-links li a {
-    display: block;
+  .nav-item {
     padding: 10px;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
   }
 }
-
-.App-header {
-  text-align: center;
-  padding: 60px 20px;
-}
-
-h1 {
-  font-size: 2rem;
-}
-
-@media (max-width: 600px) {
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  .App-header {
-    padding: 40px 15px;
-  }
-}
-/* Menu icon styles */
-.menu-icon {
-  display: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-  color: white;
-}
-
-/* Show menu icon and hide nav-links by default on small screens */
-@media (max-width: 600px) {
-  .navbar {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-  }
-
-  .menu-icon {
-    display: block;
-  }
-
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 20px;
-    background-color: red;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 1000;
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .nav-links li a {
-    display: block;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-    width: 100%;
-    text-align: center; /* 👈 Add this line */
-  }
-}
-
-

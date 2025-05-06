@@ -1,10 +1,11 @@
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Navbar, Nav, Container } from 'react-bootstrap';
+import './App.css';
 
 function App() {
   const [homeText, setHomeText] = useState('This is the home screen.');
-  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleAboutClick = async (e) => {
     e.preventDefault();
@@ -13,8 +14,7 @@ function App() {
         withCredentials: true,
         responseType: 'text',
       });
-      const data = response.data;
-      setHomeText(data);
+      setHomeText(response.data);
     } catch (error) {
       setHomeText('Failed to fetch data.');
       console.error('Error fetching data:', error);
@@ -23,25 +23,31 @@ function App() {
 
   return (
     <div className="App">
-      <nav className="navbar">
-        <div className="nav-logo">Managment System</div>
-        
-        {/* Menu icon visible only on small screens */}
-        <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
-          ☰
-        </div>
+      {/* Navbar */}
+      <Navbar expand="lg" fixed="top" variant="dark" className="navbar-custom">
+        <Container fluid>
+          {/* Logo */}
+          <Navbar.Brand href="#" className="fw-bold">Management System</Navbar.Brand>
+          
+          {/* Toggler for Mobile View */}
+          <Navbar.Toggle aria-controls="navbar-nav" />
+          
+          {/* Navbar Links */}
+          <Navbar.Collapse id="navbar-nav">
+            <Nav className="ms-auto">
+              <Nav.Link href="#home" className="nav-item" onClick={() => setHomeText('This is the home screen.')}>Home</Nav.Link>
+              <Nav.Link href="#sales" className="nav-item">Sales</Nav.Link>
+              <Nav.Link href="#inventory" className="nav-item">Inventory</Nav.Link>
+              <Nav.Link href="#about" className="nav-item" onClick={handleAboutClick}>About</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
 
-        {/* Navigation Links */}
-        <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
-          <li><a href="#home" onClick={() => setMenuOpen(false)}>Home</a></li>
-          <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
-          <li><a href="#about" onClick={(e) => { handleAboutClick(e); setMenuOpen(false); }}>About</a></li>
-        </ul>
-      </nav>
-
-      <header className="App-header">
-        <h1>Welcome to the Managment System</h1>
-        <p>{homeText}</p>
+      {/* Main Content */}
+      <header className="main-header text-center p-5">
+        <h1 className="display-4 fw-semibold">Welcome to the Management System</h1>
+        <p className="lead mt-3">{homeText}</p>
       </header>
     </div>
   );
