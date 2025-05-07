@@ -1,82 +1,96 @@
-/* Basic Body Style */
-body {
-    background-color: #f8f9fa;  /* Light gray background */
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    height: "100vh"; /* Ensures the full viewport height is used */
-    display: flex;
-    justify-content: center; /* Centers content horizontally */
-    align-items: center; /* Centers content vertically */
+/* General Wrapper */
+.login-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(to right, #2c2c2c, #3e0000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Card Container */
+.login-card {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 350px;
+  position: relative;
+  text-align: center;
+  animation: slideIn 0.6s ease-out;
+}
+
+/* Icon Circle */
+.icon-circle {
+  background-color: #ffce00;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 15px #ffce00;
+}
+
+.electric-icon {
+  color: #b30000;
+  font-size: 35px;
+}
+
+/* Title */
+.login-title {
+  font-weight: bold;
+  color: #b30000;
+  margin-bottom: 30px;
+}
+
+/* Input Fields */
+.form-control {
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  padding: 12px;
+  margin-bottom: 20px;
+  width: 100%;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: #b30000;
+  box-shadow: 0 0 5px rgba(179, 0, 0, 0.4);
+}
+
+/* Login Button */
+.btn-login {
+  background-color: #b30000;
+  color: #fff;
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  width: 100%;
+  transition: background-color 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+
+.btn-login:hover {
+  background-color: #990000;
+  transform: translateY(-2px);
+}
+
+.btn-login:active {
+  background-color: #800000;
+  transform: scale(0.98);
+}
+
+/* Animation */
+@keyframes slideIn {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
   }
-  
-  /* Login Form Container */
-  form {
-    align-items: center;
-    width: 100%; /* Full width */
-    height:"auto"; /* Full height */
-    max-width: none;  /* Remove max-width to allow full screen */
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    background: #ffffff;
-    transition: box-shadow 0.3s ease-in-out;
-    box-sizing: border-box; /* Ensures padding doesn't affect overall width */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Vertically center the form content */
-    align-items: center; /* Horizontally center the form content */
+  to {
+    transform: translateY(0px);
+    opacity: 1;
   }
-  
-  /* Form Header */
-  h4 {
-    color: #d9534f;  /* Red color for title */
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 20px; /* Adds space below the header */
-  }
-  
-  /* Input Fields */
-  input {
-    border-radius: 5px;
-    border: 1px solid #ced4da;
-    padding: 12px;
-    margin-bottom: 15px;
-    width: 100%;  /* Makes inputs take the full width of the form */
-    box-sizing: border-box; /* Ensures padding doesn't affect the width */
-    transition: border-color 0.3s ease;
-  }
-  
-  input:focus {
-    border-color: #d9534f;  /* Red border when focused */
-    box-shadow: 0 0 5px rgba(217, 83, 79, 0.5);
-  }
-  
-  /* Submit Button */
-  button {
-    background-color: #d9534f;  /* Red background */
-    color: white;
-    font-weight: bold;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;  /* Makes button take the full width of the form */
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  button:hover {
-    background-color: #c9302c;  /* Darker red on hover */
-    transform: scale(1.05);
-  }
-  
-  button:active {
-    background-color: #ac2925;  /* Even darker red on click */
-  }
-  
-  /* Alerts */
-  .alert {
-    background-color: #f2dede;  /* Light red background */
-    color: #a94442;  /* Red color for error */
-    border-color: #ebccd1;  /* Light red border */
-  }
-  
+}

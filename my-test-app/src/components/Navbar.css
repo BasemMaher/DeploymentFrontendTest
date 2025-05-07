@@ -1,63 +1,71 @@
 /* Custom Navbar Style */
 .navbar-custom {
-    background: linear-gradient(to right, rgb(238, 88, 68), rgb(176, 20, 6));
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-    padding: 10px 20px;
-    min-width: 100%;
+  background: linear-gradient(to right, rgb(238, 88, 68), rgb(176, 20, 6));
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+  min-width: 100%;
+}
+
+/* Space between navbar and content */
+.page-content-under-navbar {
+  margin-top: 90px;
+  padding-bottom: 20px;
+}
+
+/* Custom nav item styles */
+.custom-nav-item {
+  position: relative;
+  padding: 10px 20px;
+  font-weight: 500;
+  color: #fff !important;
+  background-color: transparent !important;
+  transition: all 0.3s ease;
+}
+
+.custom-nav-item:hover {
+  background-color: white !important;
+  color: rgb(176, 20, 6) !important;
+  text-shadow: none !important;
+  border-radius: 10%;
+}
+
+.custom-nav-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: rgb(176, 20, 6);
+  transition: width 0.3s ease;
+}
+
+.custom-nav-item:hover::after {
+  width: 100%;
+}
+
+/* White menu toggle icon */
+.navbar-toggler {
+  border-color: white;
+  padding: 4px 8px;
+  width: auto;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .navbar-custom {
+    padding: 12px 20px;
   }
-  
-  .nav-item {
-    position: relative;
-    padding: 10px 20px;
-    font-weight: 500;
-    color: #fff !important;
-    transition: all 0.3s ease;
+
+  .custom-nav-item {
+    padding: 10px;
   }
-  
-  .nav-item:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #fff !important;
-    text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+
+  .page-content-under-navbar {
+    margin-top: 150px; /* Extra margin for open mobile menu */
   }
-  
-  /* Underline Effect on Hover */
-  .nav-item::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background-color: #fff;
-    transition: width 0.3s ease;
-  }
-  
-  .nav-item:hover::after {
-    width: 100%;
-  }
-  
-  /* Main Header Styling */
-  .main-header {
-    margin-top: 90px;
-    background-color: #f8f9fa;
-  }
-  
-  .main-header h1 {
-    color: rgb(176, 20, 6);
-  }
-  
-  .main-header p {
-    color: #555;
-  }
-  
-  /* Mobile Adjustments */
-  @media (max-width: 768px) {
-    .navbar-custom {
-      padding: 12px 20px;
-    }
-  
-    .nav-item {
-      padding: 10px;
-    }
-  }
-  
+}

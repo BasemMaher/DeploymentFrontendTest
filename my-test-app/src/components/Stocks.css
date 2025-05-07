@@ -1,0 +1,26 @@
+.center-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full screen height */
+  background-color: #f8f9fa; /* optional background */
+}
+
+.custom-red-btn {
+  background-color: #c82333;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  min-width: 30%;
+  text-align: center;
+}
+
+  
+  .custom-red-btn:hover {
+    background-color: #a71d2a;
+    color: #fff;
+  }
+  

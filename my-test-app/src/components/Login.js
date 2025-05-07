@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.css'; // optional styling
+import './Login.css';
+import { FaBolt } from 'react-icons/fa'; // Electric icon
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState('');
@@ -10,9 +11,7 @@ function Login({ onLogin }) {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Define role based on username and password
     let assignedRole = '';
-
     if (username === 'admin' && password === '123') {
       assignedRole = 'admin';
     } else if (username === 'sales' && password === '123') {
@@ -24,36 +23,35 @@ function Login({ onLogin }) {
       return;
     }
 
-    // After assigning the role, pass it to the onLogin function
     onLogin(assignedRole);
-    navigate('/home'); // Redirect to home page after successful login
+    navigate('/home');
   };
 
   return (
-  
-    <div className="d-flex justify-content-center align-items-center bg-light"  style={{marginTop : 200}}>
-      <form className="p-4 shadow rounded bg-white" onSubmit={handleLogin} style={{ width: '300px' }}>
-        <h4 className="text-center mb-4">Login</h4>
-        <div className="mb-3">
-          <input 
-            type="text" 
-            className="form-control" 
-            placeholder="Username" 
-            onChange={(e) => setUsername(e.target.value)} 
+    <div className="login-wrapper">
+      <div className="login-card shadow-lg">
+        <div className="icon-circle">
+          <FaBolt className="electric-icon" />
+        </div>
+        <h2 className="login-title">Electric Co. Login</h2>
+        <form onSubmit={handleLogin}>
+          <input
+            type="text"
+            placeholder="Username"
+            className="form-control"
             value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
-        </div>
-        <div className="mb-3">
-          <input 
-            type="password" 
-            className="form-control" 
-            placeholder="Password" 
-            onChange={(e) => setPassword(e.target.value)} 
+          <input
+            type="password"
+            placeholder="Password"
+            className="form-control"
             value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
-        <button type="submit" className="btn btn-danger w-100">Login</button>
-      </form>
+          <button type="submit" className="btn-login">Login</button>
+        </form>
+      </div>
     </div>
   );
 }
