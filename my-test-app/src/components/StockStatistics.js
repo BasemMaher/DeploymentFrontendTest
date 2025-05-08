@@ -1,31 +1,41 @@
-import React, { useState } from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { useTranslation } from 'react-i18next';
 
 // Register chart components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const StockStatistics = () => {
-  // Static list of objects containing item types and quantities
-  const [stockData] = useState([
-    { itemType: 'Raw Material', quantity: 120 },
-    { itemType: 'Finished Product', quantity: 80 },
-    { itemType: 'Packaging', quantity: 50 },
-    { itemType: 'Raw Material', quantity: 120 },
-    { itemType: 'Finished Product', quantity: 80 },
-    { itemType: 'Packaging', quantity: 50 },
-  ]);
+  const { t } = useTranslation();
 
+  // Static list of objects containing item types and quantities
+  const stockData = [
+    { itemType: t('stock.rawMaterial'), quantity: 120 },
+    { itemType: t('stock.finishedProduct'), quantity: 80 },
+    { itemType: t('stock.packaging'), quantity: 50 },
+    { itemType: t('stock.rawMaterial'), quantity: 120 },
+    { itemType: t('stock.finishedProduct'), quantity: 80 },
+    { itemType: t('stock.packaging'), quantity: 50 },
+  ];
+  
   // Prepare data for the chart
   const chartData = {
     labels: stockData.map((data) => data.itemType),
     datasets: [
       {
-        label: 'Quantity',
+        label: t('stock.quantity'),
         data: stockData.map((data) => data.quantity),
-        backgroundColor: 'darkred',  // Inside color of the bars (dark red)
-        borderColor: 'black',        // Border color (black)
+        backgroundColor: 'darkred',
+        borderColor: 'black',
         borderWidth: 1,
       },
     ],
@@ -34,31 +44,31 @@ const StockStatistics = () => {
   // Chart options for horizontal bars
   const options = {
     responsive: true,
-    indexAxis: 'y', // Horizontal bars
+    indexAxis: 'y',
     scales: {
       x: {
-        beginAtZero: true,  // Ensure the x-axis starts from 0
+        beginAtZero: true,
       },
       y: {
-        beginAtZero: true,  // Ensure the y-axis starts from 0
+        beginAtZero: true,
       },
     },
     plugins: {
       title: {
         display: true,
-        text: 'Stock Quantities by Type',
+        text: t('stock.chartTitle'),
       },
     },
   };
 
   return (
     <Container className="mt-5">
-      <h2 className="mb-4 text-danger">Stock Statistics</h2>
+      <h2 className="mb-4 text-danger">{t('stock.statisticsTitle')}</h2>
       <Row>
         <Col>
           <Card>
             <Card.Body>
-              <div style={{ width: '100%', height: '350px' }}> {/* Set the height and width */}
+              <div style={{ width: '100%', height: '350px' }}>
                 <Bar data={chartData} options={options} />
               </div>
             </Card.Body>
@@ -69,11 +79,11 @@ const StockStatistics = () => {
         <Col>
           <Card>
             <Card.Body>
-              <h5>Stock Overview</h5>
+              <h5>{t('stock.overviewTitle')}</h5>
               <ul>
                 {stockData.map((data, index) => (
                   <li key={index}>
-                    {data.itemType}: {data.quantity} units
+                    {data.itemType}: {data.quantity} {t('stock.units')}
                   </li>
                 ))}
               </ul>

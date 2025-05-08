@@ -1,11 +1,23 @@
 /* General Wrapper */
 .login-wrapper {
   min-height: 100vh;
-  background: linear-gradient(to right, #2c2c2c, #3e0000);
+  background: linear-gradient(to bottom, #2c2c2c, #3e0000);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
+  position: relative;
+  animation: gradientMove 10s ease-in-out infinite alternate;
+}
+
+/* Animation for gradient movement */
+@keyframes gradientMove {
+  0% {
+    background-position: top;
+  }
+  100% {
+    background-position: bottom;
+  }
 }
 
 /* Card Container */
@@ -83,14 +95,33 @@
   transform: scale(0.98);
 }
 
-/* Animation */
-@keyframes slideIn {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0px);
-    opacity: 1;
-  }
+/* Language switch icon under the button */
+.lang-switch-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.lang-switch {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #fff;/* Yellow background */
+  border-radius: 50%; /* Circular shape */
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.lang-switch:hover {
+  color: #ffce00;
+  background-color: #b30000; /* Change to dark red on hover */
+}
+
+/* Display current language next to the icon */
+.lang-text {
+  font-size: 1.1rem;
+  color: #fff;
 }

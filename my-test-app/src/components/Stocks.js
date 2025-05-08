@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
-import './Stocks.css'; // 👈 Create and import this for custom styles
+import { useTranslation } from 'react-i18next';
+import './Stocks.css';
 
 function Stocks() {
+  const { t } = useTranslation();
+
   const [formData, setFormData] = useState({
     itemCode: '',
     itemType: '',
@@ -13,48 +16,38 @@ function Stocks() {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const itemTypeOptions = [
-    "Raw Material",
-    "Finished Product",
-    "Packaging",
+    t('stocks.rawMaterial'),
+    t('stocks.finishedProduct'),
+    t('stocks.packaging'),
   ];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    if (name === 'quantity' && value < 0) return; // prevent negative
-
+    if (name === 'quantity' && value < 0) return;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Log the form data (you can replace this with an API call)
     console.log('Stock Entry:', formData);
-    
-    // Show success message
     setShowSuccessMessage(true);
-    
-    // Clear all fields
     setFormData({
       itemCode: '',
       itemType: '',
       quantity: '',
       date: '',
     });
-
-    // Optional: Hide the success message after 3 seconds
     setTimeout(() => setShowSuccessMessage(false), 3000);
   };
 
   return (
     <Container className="mt-5">
-      <h2 className="mb-4 text-danger">Stock Entry</h2>
+      <h2 className="mb-4 text-danger">{t('stocks.title')}</h2>
       <Form onSubmit={handleSubmit}>
         <Row className="mb-3">
           <Col md={6}>
             <Form.Group controlId="itemCode">
-              <Form.Label>Item Code</Form.Label>
+              <Form.Label>{t('stocks.itemCode')}</Form.Label>
               <Form.Control
                 type="text"
                 name="itemCode"
@@ -66,7 +59,7 @@ function Stocks() {
           </Col>
           <Col md={6}>
             <Form.Group controlId="itemType">
-              <Form.Label>Item Type</Form.Label>
+              <Form.Label>{t('stocks.itemType')}</Form.Label>
               <Form.Select
                 name="itemType"
                 value={formData.itemType}
@@ -74,7 +67,7 @@ function Stocks() {
                 required
                 aria-label="Item Type"
               >
-                <option value="" disabled hidden>Select type</option>
+                <option value="" disabled hidden>{t('stocks.selectType')}</option>
                 {itemTypeOptions.map((option, index) => (
                   <option key={index} value={option}>
                     {option}
@@ -88,7 +81,7 @@ function Stocks() {
         <Row className="mb-3">
           <Col md={6}>
             <Form.Group controlId="quantity">
-              <Form.Label>Quantity</Form.Label>
+              <Form.Label>{t('stocks.quantity')}</Form.Label>
               <Form.Control
                 type="number"
                 name="quantity"
@@ -101,7 +94,7 @@ function Stocks() {
           </Col>
           <Col md={6}>
             <Form.Group controlId="date">
-              <Form.Label>Date</Form.Label>
+              <Form.Label>{t('stocks.date')}</Form.Label>
               <Form.Control
                 type="date"
                 name="date"
@@ -115,7 +108,7 @@ function Stocks() {
 
         <center>
           <Button className="custom-red-btn" type="submit">
-            Submit
+            {t('stocks.submit')}
           </Button>
         </center>
       </Form>
@@ -123,7 +116,7 @@ function Stocks() {
       {/* Success Message */}
       {showSuccessMessage && (
         <Alert variant="success" className="mt-4">
-          Stock entry submitted successfully!
+          {t('stocks.successMessage')}
         </Alert>
       )}
     </Container>
