@@ -3,7 +3,7 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   en: {
     translation: {
-      welcome: "Welcome to the Management System",
+      welcome: "Welcome to The Management System",
       role: "Role",
       fetchData: "Fetch Data",
       loading: "Loading...",
