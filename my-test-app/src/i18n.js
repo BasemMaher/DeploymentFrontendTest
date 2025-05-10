@@ -6,7 +6,7 @@ const resources = {
       welcome: "Welcome to The Management System",
       role: "Role",
       fetchData: "Fetch Data",
-      loading: "Loading...",
+      loading: "Loading....",
       errorFetching: "Error fetching data.",
       navbar: {
         title: "Management System",
@@ -54,7 +54,7 @@ const resources = {
       welcome: "欢迎使用管理系统",
       role: "角色",
       fetchData: "获取数据",
-      loading: "加载中...",
+      loading: "加载中....",
       errorFetching: "获取数据出错。",
       navbar: {
         title: "管理系统",
